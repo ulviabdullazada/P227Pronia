@@ -814,9 +814,14 @@
         $(document).ready(function () {
             $(document).on("click", ".quuickview-btn", function (e) {
                 e.preventDefault();
-                let url = $(this).children().attr("href");
-                fetch(url).then(data => data.text()).then(data => $("#quickModal").html(data))
+                let url = $(this).children().attr("href")
+                getProduct(url)
             })
         })
+        async function getProduct(url){
+            let response = await fetch(url);
+            let data = await response.text();
+            $("#quickModal").html(data)
+        }
     </script>
 }
