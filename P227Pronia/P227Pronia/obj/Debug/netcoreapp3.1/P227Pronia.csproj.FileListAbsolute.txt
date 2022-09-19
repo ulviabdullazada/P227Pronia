@@ -147,3 +147,4 @@ C:\Users\Ülvi\Desktop\P227 Pronia\P227Pronia\P227Pronia\obj\Debug\netcoreapp3.1
 C:\Users\Ülvi\Desktop\P227 Pronia\P227Pronia\P227Pronia\obj\Debug\netcoreapp3.1\Razor\Views\Product\Detail.cshtml.g.cs
 C:\Users\Ülvi\Desktop\P227 Pronia\P227Pronia\P227Pronia\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ProductModalPartialView.cshtml.g.cs
 C:\Users\Ülvi\Desktop\P227 Pronia\P227Pronia\P227Pronia\obj\Debug\netcoreapp3.1\Razor\Views\Product\Index.cshtml.g.cs
+C:\Users\Ülvi\Desktop\P227 Pronia\P227Pronia\P227Pronia\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ProductFilterPartialView.cshtml.g.cs

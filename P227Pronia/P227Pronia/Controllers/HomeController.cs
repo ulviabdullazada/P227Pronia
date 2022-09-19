@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using P227Pronia.DAL;
 using P227Pronia.Models;
 using P227Pronia.ViewModels.Home;
@@ -17,13 +19,28 @@ namespace P227Pronia.Controllers
         }
         public IActionResult Index()
         {
+            var productQuery = _context.Products.Take(8).Include(p => p.ProductImages);
             HomeVM vm = new HomeVM();
             vm.Sliders = _context.Sliders.OrderBy(x=>x.Order);
             vm.Services = _context.Services.Where(x => x.IsActive);
-            vm.Features = _context.Products.Take(8).Include(p=>p.ProductImages);
-            vm.BestSellers = _context.Products.OrderByDescending(p => p.SoldCount).Take(8).Include(p => p.ProductImages);
-            vm.Lastests = _context.Products.OrderByDescending(p => p.CreatedTime).Take(8).Include(p => p.ProductImages);
+            vm.Features = productQuery;
+            vm.BestSellers = productQuery.OrderByDescending(p => p.SoldCount);
+            vm.Lastests = productQuery.OrderByDescending(p => p.CreatedTime);
             return View(vm);
         }
+        public IActionResult GetSession(string key) 
+        {
+            return Content(HttpContext.Session.GetString(key));
+        }
+        public IActionResult SetSession(string value)
+        {
+            HttpContext.Session.SetString("name", value);
+            return Content("Ok");
+        }
+        public IActionResult GetCookie()
+        {
+            return Content(HttpContext.Request.Cookies["basket"]);
+        }
+        
     }
 }

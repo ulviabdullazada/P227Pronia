@@ -30,7 +30,7 @@ namespace P227Pronia
             {
                 options.UseSqlServer(Configuration["ConnectionStrings:default"]);
             });
-
+            services.AddSession();
             //IoC - Inversion of Control
         }
 
@@ -44,6 +44,7 @@ namespace P227Pronia
 
             app.UseStaticFiles();
             app.UseRouting();
+            app.UseSession();
 
             app.UseEndpoints(endpoints =>
             {
